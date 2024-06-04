@@ -1,21 +1,23 @@
-// Object Oriented in Javascript
+// Object Oriented in Javascript 
 
 /*
 # javascript and classes
+
 ## OOP
+
 ## Object
-- Collection of properties and methods
+- collection of properties and methods
 - toLowerCase
 
-## Why use OOP instead
+## why use OOP
 
-## parts of OOP
-Object literal
+# parts of OOP
+- Object literal
 
-- Constructor function
-- Prototype
+- Construction function
+- Prototypes
 - Classes
-- Instance (new, this)
+- Instances (new, this)
 
 ## 4 pillars
 - Abstraction
@@ -25,12 +27,35 @@ Object literal
 */
 
 const user= {
-    userName: 'Rupayan',
-    loginCount: 8,
+    userName: 'Rup',
+    loginCount: 10,
     signedIn: true,
     getUserDetails: function(){
-        console.log('Got user details from database');
+        // console.log("Got user details from database");
+        console.log(`username: ${this.userName}`);
+        console.log(this);
     }
 }
+console.log(user.userName);
+// console.log(user.getUserDetails());
+console.log(this);
 
-console.log(user);
+
+function anotheruser(userName, loginCount, isLoggedIn) {
+    this.userName = userName;
+    this.loginCount = loginCount;
+    this.isLoggedIn = isLoggedIn;
+    this.greeting= function() {
+        console.log(`welcome ${this.userName}`);
+    }
+    return this  // by default "return this", but we write "return this" for better understading
+}
+
+const userOne= new anotheruser("Rupayan", 5, true);
+const userTwo= new anotheruser("Rup", 11, false);
+console.log(userOne);
+console.log(userOne.constructor);
+console.log(userOne instanceof anotheruser);
+console.log(userOne instanceof Object);
+
+console.log(userTwo);
