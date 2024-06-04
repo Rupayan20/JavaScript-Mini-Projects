@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Learning</title>
+</head>
+<body style="background-color: #212121; color: #fff">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    // add a value =>
+    function addLanguage(lang) {
+        const addLang= document.createElement("li")
+        addLang.innerHTML= `${lang}`
+        document.querySelector('.language').appendChild(addLang)
+    }
+    addLanguage("Python")
+    addLanguage("Java")
+    // this is not optimized process, because every time it goes through a tree structure. When my data is huge, then it travels from beginning to the end of the tree.
+    
+    function addOptiLang(lang){
+        const addLang = document.createElement("li")
+        addLang.appendChild(document.createTextNode(lang)) 
+        document.querySelector('.language').appendChild(addLang)
+    }
+    addOptiLang('C++')
+    addOptiLang('C')
+    // this is a optimized way to add something using "appendChild".
+
+
+    // edit a value =>
+    const secondLang= document.querySelector('li:nth-child(5)')
+    const newLi= document.createElement('li')
+    newLi.textContent = "Ruby"
+    secondLang.replaceWith(newLi)
+
+    // edit a value in another way
+    const firstLang= document.querySelector('li:first-child')
+    firstLang.outerHTML= '<li>Typescript</li>'
+
+
+    // remove a value =>
+    const lastLang= document.querySelector('li:last-child')
+    lastLang.remove()
+</script>
+</html>
